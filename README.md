@@ -18,6 +18,7 @@ The Testing Instructions Generator is a web-based tool designed to create detail
 
 ### Back-End
 - **Express:** For creating the server and handling API requests.
+  
 
 ## Project Structure
 
@@ -56,6 +57,7 @@ The Testing Instructions Generator is a web-based tool designed to create detail
     node server.js
     ```
 
+
 ## How to Use
 
 1. **Open the Web Application:** Navigate to `http://localhost:3000` in your web browser.
@@ -63,6 +65,7 @@ The Testing Instructions Generator is a web-based tool designed to create detail
 3. **Upload Screenshots:** Click on the file upload area to select and upload multiple screenshots.
 4. **Generate Testing Instructions:** Click the "Generate Testing Instructions" button to process the screenshots and context.
 5. **View Results:** The generated instructions will be displayed in the results section below the form.
+
 
 ## Prompting Strategy
 
@@ -83,9 +86,29 @@ The prompting strategy guides the multimodal LLM to generate detailed test cases
    
    The screenshots provided are as follows:
 
-- **Multer:** For handling file uploads.
-- **Google Generative AI:** For generating testing instructions based on screenshots.
-- **Base64 Encoding:** For embedding screenshots in the prompt to the AI model.
+
+## Screenshots
+
+## 1. Initial Web Page Interface
+- ![Initial Web Page Interface](https://github.com/user-attachments/assets/178a4d76-6f80-45a3-961d-56efd99f108f)
+- **Description:** This screenshot shows the initial interface of the web application. There are two input fields: the first box is for optional context input, and the second box is for uploading multiple images. Below these fields is a button labeled "Describe Testing Instructions."
+
+## 2. Loading State
+- ![Loading State](![Screenshot 2024-09-06 205107](https://github.com/user-attachments/assets/4bf310b4-89f2-4242-a6b0-8f0fd38d304a)
+- **Description:** In this screenshot, the "Describe Testing Instructions" button has been clicked, and the application is in the process of generating the test instructions. A skeleton loader is displayed, indicating that the generation is in progress.
+
+## 3. Generated Test Instructions (Part 1)
+- ![Generated Test Instructions (Part 1)]![Screenshot 2024-09-06 205132](https://github.com/user-attachments/assets/809397ee-0ec0-4869-9321-e747b201dddf)
+- **Description:** This screenshot displays the first part of the generated test instructions. The instructions include a detailed description, pre-conditions, testing steps, and expected results based on the uploaded screenshots and provided context.
+
+## 4. Generated Test Instructions (Part 2)
+- ![Generated Test Instructions (Part 2)]![Screenshot 2024-09-06 205204](https://github.com/user-attachments/assets/a7762ad4-f019-4239-a113-f6c462587ed7)
+
+- **Description:** This screenshot shows the continuation of the generated test instructions. It further elaborates on the testing process, ensuring all steps are covered thoroughly.
+
+
+
+
 
 
 
