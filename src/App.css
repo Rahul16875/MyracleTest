@@ -11,6 +11,7 @@ body {
 
 .app-container {
   width: 80%;
+  margin: auto;
   max-width: 1000px;
   background: #fff;
   border-radius: 15px;
