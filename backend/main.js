@@ -9,14 +9,11 @@ const port = 3000;
 var cors = require("cors");
 app.use(cors());
 
-// Configure multer for file uploads
 const upload = multer({ dest: "uploads/" });
 
-// Initialize the Google Generative AI client
 const genAI = new GoogleGenerativeAI("AIzaSyDSlj5s9hXALsXbhP9QgktqIMoIrGn8oFE");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-// Convert file to Generative Part
 function fileToGenerativePart(path, mimeType) {
   return {
     inlineData: {
@@ -26,20 +23,19 @@ function fileToGenerativePart(path, mimeType) {
   };
 }
 
-// Endpoint to handle the test generation
 app.post("/api/generate", upload.array("screenshots"), async (req, res) => {
   try {
     const { context } = req.body;
     const screenshots = req.files;
 
-    // Log received context and number of screenshots
     console.log("Received context:", context);
     console.log("Received screenshots:", screenshots.length);
 
     if (!screenshots || screenshots.length === 0) {
       return res.status(400).json({ error: "No screenshots uploaded" });
     }
-// Create a base prompt with optional context
+
+
   let prompt = context ? `${context}\n\n` : "";
   prompt += `Generate a detailed, step-by-step guide on how to test each functionality based on the provided screenshots. For each test case, include the following details:
 
@@ -47,7 +43,7 @@ app.post("/api/generate", upload.array("screenshots"), async (req, res) => {
     2. **Pre-conditions**: What needs to be set up or ensured before starting the test?
     3. **Testing Steps**: Provide clear, step-by-step instructions on how to perform the test.
     4. **Expected Result**: What should happen if the feature works correctly?
-      
+
     The screenshots provided are as follows:
     `;
 
@@ -61,7 +57,6 @@ app.post("/api/generate", upload.array("screenshots"), async (req, res) => {
     console.log("Sending request to Gemini API...");
     const result = await model.generateContent([prompt, ...imageParts]);
 
-    // Log the result for debugging
     console.log("Received result from Gemini API:", result);
 
     // Check if the result is valid
